@@ -366,6 +366,68 @@ void search_books()
 		mainmenu();
 	
 }
+// view books function
+void view_books()
+{
+	int i,e;
+	FILE*sfile;
+	system("cls");
+	sfile=fopen("BookRecord.txt","r");
+	printf("\n\t\t\t*********************************************************");
+	printf("\n\t\t\t**************** VIEW ALL BOOK RECORDS *****************");
+	printf("\n\t\t\t*********************************************************");
+	if(sfile==NULL)
+	{
+		printf("\n\n\t\t RECORD EMPTY");
+		getch();
+	}
+	else
+	{
+		gotoxy(1,6);
+		printf("Book Id NO.");
+		gotoxy(13,6);
+		printf("Book Name");
+		gotoxy(30,6);
+		printf("Publication");
+		gotoxy(45,6);
+		printf("Students Name");
+		gotoxy(63,6);
+		printf("Students Address");
+		gotoxy(83,6);
+		printf("Due Days\n");
+		for(i=0;i<95;i++)
+		{
+			printf("-");
+		}
+		e=8;
+		while(fscanf(sfile,"%i %s %s %s %s %i\n\n",&m.books_id,m.b_name,m.a_name,m.s_name,m.add,&m.days)!=EOF)
+		{
+			gotoxy(1,e);
+			printf("%i",m.books_id);
+			gotoxy(13,e);
+			printf("%s",m.b_name);
+			gotoxy(30,e);
+			printf("%s",m.a_name);
+			gotoxy(45,e);
+			printf("%s",m.s_name);
+			gotoxy(63,e);
+			printf("%s",m.add);
+			gotoxy(83,e);
+			printf("%i",m.days);
+			e++;
+		}
+		printf("\n");
+		for(i=0;i<95;i++)
+		printf("-");
+	}
+	printf("\n\n\t Press any key for main menu........");
+	fclose(sfile);
+	getch();
+	mainmenu();
+
+
+}
+
 	
 	
 		
