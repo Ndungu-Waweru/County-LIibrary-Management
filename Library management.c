@@ -477,6 +477,173 @@ void delete_books()
 	getch();
 	mainmenu();
 }
+// edit function
+void edit_books()
+{
+	int i, found,target;
+  char ch;
+  int books_id;
+  FILE *sfile, *modify;
+  system("cls");
+  printf("\n\t\t********************************************");
+  printf("\n\t\t*******Edit Books Details*******************");
+  printf("\n\t\t********************************************");
+
+   sfile=fopen("BookRecord.txt","rb+");
+   if(sfile==NULL)
+   {
+   	
+		printf("\n\t Can not open file!! ");
+		getch();
+		mainmenu();
+   }
+   gotoxy(15,6);
+   printf("\tEnter Book ID NO. for edit:");
+   scanf("%i",&target);
+   gotoxy(15,8);
+   modify=fopen("TempBook.txt","a+");
+   if (modify==NULL)
+   {
+   	printf("\n File cannot be open...!");
+   	getch();
+   	printf("\n\nPress any key to go to main menu.......");
+   	mainmenu();
+   }
+   else
+   {
+   	while(fscanf(sfile,"%i %s %s %s %s %i\n",&m.books_id,m.b_name,m.a_name,m.s_name,m.add,&m.days)!=EOF)
+   	{
+   		if(m.books_id==target)
+   		{
+   			found=1;
+   			printf("\n\tBook ID NO.\t:%i\n\tBook Name\t:%s\n\tPublication\t:%s\n\tStudent Name\t:%s\n\tStudent Address\t:%s\n\tDue Days\t:%i\n",m.books_id,
+			   															m.b_name,m.a_name,m.s_name,m.add,m.days);
+			printf("\n\tEdit With New Records!");
+   			do
+   			{
+   				printf("\n\t\tEnter New Book Name\t\t:");
+				fflush(stdin);
+				gets(m.b_name);
+				m.b_name[0]=toupper(m.b_name[0]);
+				for (i=0;i<strlen(m.b_name); ++i)
+				{
+					if(isalpha(m.b_name[i]))
+					{
+						valid = 1;
+					}
+					else
+					{
+						valid = 0;
+						break;
+					}
+				}
+				if (!valid)
+				{
+					printf("\nBook name contain invalid character. Please enter again.");
+				}
+			}while(!valid);
+			do
+			{
+				printf("\n\t\tEnter New Publication\t\t:");
+				fflush(stdin);
+				gets(m.a_name);
+				m.a_name[0]=toupper(m.a_name[0]);
+				for (i=0;i<strlen(m.a_name); ++i)
+				{
+					if(isalpha(m.a_name[i]))
+					valid = 1;
+					else
+					{
+						valid = 0;
+						break;
+					}
+				}
+				if (!valid)
+				{
+					printf("\nWriter name contain invalid character. Please enter again.");
+				}
+			}while(!valid);
+			do
+			{
+				printf("\n\t\tEnter New Student Name\t\t:");
+				fflush(stdin);
+				gets(m.s_name);
+				m.s_name[0]=toupper(m.s_name[0]);
+				for (i=0;i<strlen(m.s_name); ++i)
+				{
+					if(isalpha(m.s_name[i]))
+					valid = 1;
+					else
+					{
+						valid = 0;
+						break;
+					}
+				}
+				if (!valid)
+				{
+					printf("\nStudent name contain invalid character. Please enter again.");
+				}
+			}while(!valid);
+			do
+			{
+				printf("\n\t\tEnter New Student Address\t:");
+				fflush(stdin);
+				gets(m.add);
+				m.add[0]=toupper(m.add[0]);
+				for (i=0;i<strlen(m.add); ++i)
+				{
+					if(isalpha(m.add[i]))
+					valid = 1;
+					else
+					{
+						valid = 0;
+						break;
+					}
+				}
+				if (!valid)
+				{
+					printf("\nAddress contain invalid character. Please enter again.");
+				}
+			}while(!valid);
+			printf("\n\t\tEnter Duration To Take Book");
+			
+			do
+			{
+				printf("\n\t\tMaximum [1-15] Days\t\t:");
+				scanf("%i",&m.days);
+				if(m.days<1 || m.days>15)
+				{
+					printf("\n\tYou Cannot take more than 10 Days.Re-Enter.");
+				}
+			}while(m.days<1 || m.days>15);
+
+			printf("\nPress 'U' to update and other key to cancel....!");
+			ch=getche();
+			if(ch=='u'|| ch=='U')
+			{
+				fprintf(modify,"%i %s %s %s %s %i",m.books_id,m.b_name,m.a_name,m.s_name,m.add,m.days);
+				fflush(stdin);
+				printf("\n\nBooks has been updated......");
+			}
+			else
+			{
+				fprintf(modify,"%i %s %s %s %s %i",m.books_id,m.b_name,m.a_name,m.s_name,m.add,m.days);
+				fflush(stdin);
+			}
+	   }
+	   if(!found)printf("\n\tNo record found!");
+	   fclose(modify);
+	   fclose(sfile);
+	   remove("BookRecord.txt");
+	   rename("TempBook.txt","BookRecord.txt");
+	  
+     	printf("\n\t\tPress any key to go to mainmenu.....");
+     	getch();
+	    mainmenu();
+   }
+}
+}
+
 
 	
 	
