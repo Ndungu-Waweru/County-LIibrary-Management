@@ -318,7 +318,55 @@ void add_books()
 	}
 	
 }
+// search books function
+void search_books()
+{
+	int found=0;
+	char id[40];
+	FILE *sfile;
+	system("cls");
+	sfile=fopen("BookRecord.txt","rb");
+	printf("\n\t\t******************************************************");
+	printf("\n\t\t***************** SEARCH BOOKS LIST*******************");
+	printf("\n\t\t******************************************************\n\n");
 
+	printf("\nEnter Book Name to search:");
+	fflush(stdin);
+	scanf("%s",id);
+	id[0]=toupper(id[0]);
+	 
+	printf("                                                                                     \n");
+	printf(" Book ID NO. Book Name    Publication    Student Name   Student Address   Due Days");
+
+	printf("\n=====================================================================================\n");
+	while(fscanf(sfile,"%i %s %s %s %s %i\n\n",&m.books_id, m.b_name, m.a_name, m.s_name, m.add, &m.days)!=EOF)
+	{
+		if(strcmp(id,m.b_name)==0)
+		{
+			found=1;
+			gotoxy(1,10);
+			printf("%i",m.books_id);
+			gotoxy(12,10);
+			printf("%s",m.b_name);
+			gotoxy(24,10);
+			printf(" %s",m.a_name);
+			gotoxy(40,10);
+			printf(" %s",m.s_name);
+			gotoxy(56,10);
+			printf("%s",m.add);
+			gotoxy(74,10);
+			printf("%i",m.days);
+			break;
+		}
+	}
+		if(!found) printf("\n\n\tNo Record");
+		fclose(sfile);
+		printf("\t\t\n\n\nPress any key to go to mainmenu.....");
+		getch();
+		mainmenu();
+	
+}
+	
 	
 		
 
