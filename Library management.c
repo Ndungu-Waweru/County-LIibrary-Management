@@ -106,12 +106,13 @@ void login()
 	
 		printf("\n\t\t\t\tPassword:");
 		scanf("%s" ,b);
-		if((strcmp(a,"county library management project")==0)&& (strcmp(b,"system")==0))
+		if((strcmp(a,"waweru")==0)&& (strcmp(b,"9824")==0))
 		{
 			printf("\n\t\t\t\tLogged Into System.");
 			printf("\n\t\t\t\tPress any key to go next.....");
 			printf("\n------------------------------------------------------------------------------------------------");
 			getch();
+			mainmenu();
 		}
 		else
 		{
@@ -130,6 +131,59 @@ void login()
 	}
 	
 }
+// mainmenu function
+void mainmenu(void)
+	{
+		int choice;
+	
+		system("cls");
+		printf("\n------------------------------------------------------------------------------------------------");
+		gotoxy(20,2);
+		printf("MAIN MENU");
+		printf("\n------------------------------------------------------------------------------------------------");
+		gotoxy(20,5);
+		printf("1. Add Books");
+		gotoxy(20,7);
+		printf("2. Search Books");
+		gotoxy(20,9);
+		printf("3. View Books");
+		gotoxy(20,11);
+		printf("4. Edit Book's Record");
+		gotoxy(20,13);
+		printf("5. Delete Books");
+		gotoxy(20,15);
+		printf("6. Close Application");
+		gotoxy(20,17);
+		printf("Please Enter a choice[1-6]:");
+		scanf("%i",&choice);
+		switch(choice)
+			{
+				case 1:
+				add_books();
+				break;
+				case 2:
+			    search_books();
+				break;
+				case 3:
+				view_books();
+				break;
+				case 4:
+				edit_books();
+				break;
+				case 5:
+				delete_books();
+				case 6:
+				exit(0);
+				break;
+				
+				default:
+					printf("Wrong Entry!!");
+					exit(0);
+					
+						
+			}
+}
+		
 
 
 	
