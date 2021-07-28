@@ -427,6 +427,56 @@ void view_books()
 
 
 }
+// delete function
+void delete_books()
+{
+	
+	int target;
+	system("cls");
+	printf("\n\t\t*************************************************");
+	printf("\n\t***************Delete Books Details****************");
+	printf("\n\t\t*************************************************");
+	FILE *sfile,*mfile;
+	sfile=fopen("BookRecord.txt","r");
+	printf("\nEnter Book ID NO. for delete:");
+	scanf("%i",&target);
+	mfile=fopen("TempBook.txt","w+");
+	if(sfile==NULL)
+	{
+		printf("\n\tNo Record in File!");
+		printf("\n\t\t\tPress any key to Main Menu..");
+		getch();
+		mainmenu();
+	}
+	else
+	{
+		while(fscanf(sfile,"%i %s %s %s %s %i\n",&m.books_id,m.b_name,m.a_name,m.s_name,m.add,&m.days)!=EOF)
+		{
+			if(target!=m.books_id)
+			{
+				fprintf(mfile,"%i %s %s %s %s %i\n",m.books_id,m.b_name,m.a_name,m.s_name,m.add,m.days);
+			}
+			else
+			{
+				found=1;
+			}
+		}
+		if(!found)
+		{
+			printf("\nRecord not found");
+		}
+		else
+		{
+			printf("\n\tRecord deleted successfully.....");
+		}
+		fclose(sfile);
+		fclose(mfile);
+		remove("BookRecord.txt");
+		rename("TempBook.txt","BookRecord.txt");
+	}
+	getch();
+	mainmenu();
+}
 
 	
 	
