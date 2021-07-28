@@ -52,6 +52,7 @@ void gotoxy(short x, short y)// declare the gotoxy function
 void main() // declare main functions
 {
 	welcome(); // call welcome screen
+	login(); //call login screen
 }
 // welcomr function
 void welcome()
@@ -83,6 +84,53 @@ gotoxy(28,22);
 printf(" Enter any key to continue.....");
 getch();
 }
+// login function
+void login()
+{
+	system("cls");
+	int L=0;
+	char a[30], b[30];
+	system("cls");
+	
+		
+	
+	printf("------------------------------------------------------------------------------------------------\n");
+	printf("\t\t\t\t\tLogin Screen");
+	printf("\n------------------------------------------------------------------------------------------------");
+	do
+	{
+		printf("\n\t\t\t\tEnter Username and Password");
+	
+		printf("\n\t\t\t\tUsername:");
+		scanf("%s" ,a);
+	
+		printf("\n\t\t\t\tPassword:");
+		scanf("%s" ,b);
+		if((strcmp(a,"county library management project")==0)&& (strcmp(b,"system")==0))
+		{
+			printf("\n\t\t\t\tLogged Into System.");
+			printf("\n\t\t\t\tPress any key to go next.....");
+			printf("\n------------------------------------------------------------------------------------------------");
+			getch();
+		}
+		else
+		{
+			
+			printf("\t\t\t\tLogin Failed Enter Again Username & Password Again\n\n");
+			L++;
+		}
+	}
+		while(L<=3);	
+	if(L>3){
+		system("cls");
+		gotoxy(40,15);
+		printf("Sorry,Unknown User.");
+		getch();
+		system("cls");
+	}
+	
+}
+
 
 	
 
