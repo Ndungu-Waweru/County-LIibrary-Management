@@ -183,6 +183,143 @@ void mainmenu(void)
 						
 			}
 }
+// add books function
+void add_books()
+{
+	int days;
+	system("cls");
+	FILE *sfile;
+	sfile = fopen("BookRecord.txt","a");
+	printf("\n\t\t****************************************************");
+	printf("\n\t*********************ADD NEW BOOKS*********************");
+	printf("\n\t\t******************************************************");
+	printf("\n\n\t\t  ENTER YOUR DETAILS BELOW:");
+	printf("\n\t\t------------------------------");
+	printf("\n\t\tBook ID NO.\t\t:");
+	fflush(stdin);
+	scanf("%i",&m.books_id);
+	do
+	{
+		printf("\n\t\tBook Name\t\t:");
+		fflush(stdin);
+		gets(m.b_name);
+		m.b_name[0]=toupper(m.b_name[0]);
+		for (i=0;i<strlen(m.b_name); ++i)
+		{
+			if(isalpha(m.b_name[i]))
+			{
+				valid = 1;
+			}
+			else
+			{
+				valid = 0;
+				break;
+			}
+		}
+		if (!valid)
+		{
+			printf("\nName contain invalid character. Please enter again.");
+		}
+	}while(!valid);
+	do
+	{
+		printf("\n\t\tPublication\t\t:");
+		fflush(stdin);
+		gets(m.a_name);
+		m.a_name[0]=toupper(m.a_name[0]);
+		for (i=0;i<strlen(m.a_name); ++i)
+		{
+			if(isalpha(m.a_name[i]))
+				valid = 1;
+			else
+			{
+				valid = 0;
+				break;
+			}
+		}
+		if (!valid)
+		{
+			printf("\nName contain invalid character. Please enter again.");
+		}
+	}while(!valid);
+	do
+	{
+		printf("\n\t\tStudent Name\t\t:");
+		fflush(stdin);
+		gets(m.s_name);
+		m.s_name[0]=toupper(m.s_name[0]);
+		for (i=0;i<strlen(m.s_name); ++i)
+		{
+			if(isalpha(m.s_name[i]))
+				valid = 1;
+			else
+			{
+				valid = 0;
+				break;
+			}
+		}
+		if (!valid)
+		{
+			printf("\nName contain invalid character. Please enter again.");
+		}
+	}while(!valid);
+		do
+			{
+				printf("\n\t\tStudent Address\t\t:");
+				fflush(stdin);
+				gets(m.add);
+				m.add[0]=toupper(m.add[0]);
+				for (i=0;i<strlen(m.add); ++i)
+				{
+					if(isalpha(m.add[i]))
+					valid = 1;
+					else
+					{
+						valid = 0;
+						break;
+					}
+				}
+				if (!valid)
+				{
+					printf("\nAddress contain invalid character. Please enter again.");
+				}
+			}while(!valid);
+			printf("\n\t\tEnter Duration To Take Book");
+			
+			do
+			{
+				printf("\n\t\tMaximum [1-15] Days\t:");
+				scanf("%i",&m.days);
+				if(m.days<1 || m.days>15)
+				{
+					printf("\n\tYou Cannot take more than 15x Days.Re-Enter.");
+				}
+			}while(m.days<1 || m.days>15);
+
+	fprintf(sfile,"%i %s %s %s %s %i\n\n",m.books_id, m.b_name, m.a_name, m.s_name,m.add,m.days);
+	fclose(sfile);
+	printf("\n\t SUCCESFULLY RECORDED.\n");
+	getch();
+	printf("\n\t\t Do you want to add another book?[Y/N]:");
+	scanf("%s",&answer);
+	while(toupper(answer)!='Y'&& toupper(answer)!='N')
+	{
+		printf("Invalid!\n\tDo you want to add book?[Y/N]:");
+		scanf("%s",&answer);
+	}
+	if(toupper(answer)=='Y')
+	{
+		add_books();
+	}
+	else
+	{
+		printf("\n\t\tPress any key to go to mainmenu.....");
+		mainmenu();
+	}
+	
+}
+
+	
 		
 
 
