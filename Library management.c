@@ -14,18 +14,18 @@
 #include<windows.h>
 #include<time.h>
 
-void welcome(); // to display the welcome screen
-void login(); // to display the login screen
-void mainmenu(); // to display the main menu
-void add_books(); // to display the add books screen
-void delete_books();// to display the delete function
-void edit_books(); // to display the edit function
-void search_books(); // to display the search function
-void view_books();// too display the view books function
+void welcome();
+void login(); 
+void mainmenu(); 
+void add_books(); 
+void delete_books();
+void edit_books(); 
+void search_books();
+void view_books();
 
 
 
-int wrong=1, count;//global variable for login function of int type
+int wrong=1, count;
 int i=0, valid=0;
 char choice=0 ;
 
@@ -34,13 +34,13 @@ int target=0,found=0;
 
 struct books// to call in program
 {
-	int books_id; // declare the integer data type
-	char b_name[20];// declare the character data type
-	char a_name[20];// declare the charecter data type
-	char s_name[20];// declare the character data type
-	char add[15];// declare the character data type
-	int days;// declare the integer data type
-	int yr; // declare the integer data type
+	int books_id; 
+	char b_name[20];
+	char a_name[20];
+	char s_name[20];
+	char add[15];
+	int days;
+	int yr; 
 	
 }m;
 void gotoxy(short x, short y)// declare the gotoxy function
@@ -231,6 +231,11 @@ void add_books()
 		{
 			if(isalpha(m.s_name[i]))
 				valid = 1;
+
+			
+			
+			
+			
 			else
 			{
 				valid = 0;
@@ -297,7 +302,6 @@ void add_books()
 	}
 	
 }
-// search books function
 void search_books()
 {
 	int found=0;
