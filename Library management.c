@@ -52,35 +52,14 @@ void gotoxy(short x, short y)// declare the gotoxy function
 void main() // declare main functions
 {
 	welcome(); // call welcome screen
-	login(); //call login screen
+	login(); // call login screen
 }
-// welcomr function
+welcome function
 void welcome()
 {
 
 	gotoxy(25,6);
-printf("  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**");
-gotoxy(25,7);
-printf("  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**");
-gotoxy(25,8);
-printf("        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-gotoxy(25,9);
-printf("        =                 WELCOME                   =");
-gotoxy(25,10);
-printf("        =                   TO                      =");
-gotoxy(25,11);
-printf("        =                 LIBRARY                   =");
-gotoxy(25,12);
-printf("        =               MANAGEMENT                  =");
-gotoxy(25,13);
-printf("        =                 SYSTEM                    =");
-gotoxy(25,14);
-printf("        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-gotoxy(25,15);
-printf("  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**");
-gotoxy(25,16);
-printf("  **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**");
-gotoxy(28,22);
+printf("welcome to our library\n");
 printf(" Enter any key to continue.....");
 getch();
 }
